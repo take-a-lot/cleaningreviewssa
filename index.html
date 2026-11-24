@@ -1493,46 +1493,6 @@
   color:#111;
 }
 
-/* ===== COUNTDOWN URGENCY TIMER ===== */
-.countdown-bar{
-  background: linear-gradient(90deg, #0b79bf, #0a5e96);
-  color: #fff;
-  padding: 10px 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-}
-.countdown-bar .fire-ico{
-  font-size: 16px;
-  animation: pulse-fire 1s ease-in-out infinite;
-}
-.countdown-timer{
-  display: flex;
-  gap: 4px;
-  margin-left: auto;
-}
-.countdown-timer .cd-block{
-  background: rgba(0,0,0,0.25);
-  border-radius: 4px;
-  padding: 3px 6px;
-  min-width: 28px;
-  text-align: center;
-  font-size: 14px;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-}
-.countdown-timer .cd-sep{
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.7;
-}
-@keyframes pulse-fire{
-  0%,100%{ transform: scale(1); }
-  50%{ transform: scale(1.2); }
-}
 
 /* ===== FIX: remove buraco entre rating e preço ===== */
 .wrap{ padding-bottom: 0 !important; }
@@ -1758,18 +1718,6 @@
     </div>
   </header>
 
-<!-- COUNTDOWN URGENCY -->
-<div class="countdown-bar">
-  <span class="fire-ico">🔥</span>
-  <span>Deal ends today!</span>
-  <div class="countdown-timer">
-    <span class="cd-block" id="cdH">00</span>
-    <span class="cd-sep">:</span>
-    <span class="cd-block" id="cdM">00</span>
-    <span class="cd-sep">:</span>
-    <span class="cd-block" id="cdS">00</span>
-  </div>
-</div>
 
   <!-- ETAPA 2: CORPO ACIMA DA DOBRA -->
   <div class="wrap">
@@ -2660,24 +2608,5 @@ selectOffer(0);
 
 
 
-<script>
-(function(){
-  var now = new Date();
-  var end = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
-  function tick(){
-    var left = end - new Date();
-    if(left <= 0){ left = 0; }
-    var h = Math.floor(left / 3600000);
-    var m = Math.floor((left % 3600000) / 60000);
-    var s = Math.floor((left % 60000) / 1000);
-    document.getElementById('cdH').textContent = h < 10 ? '0'+h : h;
-    document.getElementById('cdM').textContent = m < 10 ? '0'+m : m;
-    document.getElementById('cdS').textContent = s < 10 ? '0'+s : s;
-    if(left > 0){ requestAnimationFrame(tick); }
-  }
-  tick();
-  setInterval(tick, 1000);
-})();
-</script>
 
 </body></html>
